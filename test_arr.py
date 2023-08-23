@@ -28,6 +28,7 @@ def append_min_arr(dop_len, min_arr):
 def print_file(A_arr, B_arr, C_arr, c_file, max_len):
 	len = 70
 	flag = 0
+	flags = 0
 	i=0
 	while(i<max_len):
 		counter = 0
@@ -37,12 +38,14 @@ def print_file(A_arr, B_arr, C_arr, c_file, max_len):
 		counter = 0
 		c_file.write('\n')
 		while counter <= len+flag and i+counter<max_len+flag:
-			if C_arr[counter+i] == '*':
+			if C_arr[counter+i+flags] == '*':
 				flag += 1
 			else:
-				c_file.write(C_arr[counter+i])
+				c_file.write(C_arr[counter+i+flags])
 			counter+=1
+		c_file.write(' '+str(counter+i))
 		if flag >0:
+			flags += flag
 			flag =0
 			c_file.write('<-------------')
 			print(str(i//70+1)+' строка')
